@@ -23,7 +23,7 @@ def main():
 while True:
     weather = get_weather()
     print(f"Sending: {weather}")
-    producer,send(KAFKA_TOPIC, value=weather)
+    producer.send(KAFKA_TOPIC, value=weather)
     time.sleep(60) #Fetches and sends weather data to topic once per minute
     
 if __name__ == '__main__':
