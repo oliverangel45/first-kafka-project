@@ -30,3 +30,12 @@ services:
     restart: on-failure
     environment:
       KAFKA_BROKER: broker:29092
+
+  consumer:
+    build: ./consumer
+    container_name: consumer
+    depends_on:
+    - broker
+    restart: on-failure
+    environment:
+      KAFKA_BROKER: broker:29092
