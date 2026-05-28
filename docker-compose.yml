@@ -27,5 +27,6 @@ services:
     container_name: producer
     depends_on:
       - broker
+    restart: on-failure
     environment:
       KAFKA_BROKER: broker:29092

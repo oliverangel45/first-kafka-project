@@ -15,16 +15,20 @@ def get_weather():
     return response.json()
 
 def main():
+    # Allow Kafka to start
+    print ("Waiting for Kafka to start up")
+    time.sleep(15)
+    
     producer = KafkaProducer(
         bootstrap_servers=KAFKA_BROKER,
         value_serializer=lambda v: json.dumps(v).encode('utf-8')
     )
     
-while True:
-    weather = get_weather()
-    print(f"Sending: {weather}")
-    producer.send(KAFKA_TOPIC, value=weather)
-    time.sleep(60) #Fetches and sends weather data to topic once per minute
+    while True:
+        weather = get_weather()
+        print(f"Sending: {weather}")
+        producer.send(KAFKA_TOPIC, value=weather)
+        time.sleep(60) #Fetches and sends weather data to topic once per minute
     
 if __name__ == '__main__':
     main()
