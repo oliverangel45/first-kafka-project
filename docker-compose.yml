@@ -28,8 +28,8 @@ services:
     depends_on:
       - broker
     restart: on-failure
-    environment:
-      KAFKA_BROKER: broker:29092
+    env_file:
+      - .env
 
   consumer:
     build: ./consumer
@@ -37,5 +37,5 @@ services:
     depends_on:
     - broker
     restart: on-failure
-    environment:
-      KAFKA_BROKER: broker:29092
+    env_file:
+      - .env
