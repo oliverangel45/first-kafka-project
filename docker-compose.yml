@@ -31,11 +31,19 @@ services:
     env_file:
       - .env
 
+  snowflake-init:
+    build: ./init
+    container_name: snowflake-init
+    env_file:
+      - .env
+    restart: on-failure
+
   consumer:
     build: ./consumer
     container_name: consumer
     depends_on:
     - broker
+    - snowflake-init
     restart: on-failure
     env_file:
       - .env

@@ -1,11 +1,11 @@
 # My First Kafka Project: Weather Pipeline
 This project is a self led pilot project which aims to help teach me kafka basics including docker and other technologies.
 
-A real-time data pipeline built with Apache Kafka and Python, running entirely in Docker.
+A real-time data pipeline built with Apache Kafka and Python, running entirely in Docker, with data landing in Snowflake as the cloud data warehouse.
 
 ## What it does
 
-Fetches live weather data for Shoreham-by-Sea, UK from the Open-Meteo API every 60 seconds, publishes it to a Kafka topic, and consumes it in real time.
+Fetches live weather data for Shoreham-by-Sea, UK from the Open-Meteo API every 60 seconds, publishes it to a Kafka topic, consumes it in real time, and loads it into a Snowflake table.
 
 ## Architecture
 
@@ -16,20 +16,8 @@ Open-Meteo API → Producer → Kafka Topic (weather) → Consumer
 - **Apache Kafka** (KRaft mode) — message broker
 - **Python** — producer and consumer scripts
 - **Docker & Docker Compose** — containerisation and orchestration
+- **Snowflake** — cloud data warehouse (AWS, Europe London region)
 - **Open-Meteo API** — free real time weather data, no API key required
-
-## Project Structure
-
-first-kafka-project/
-├── docker-compose.yml
-├── producer/
-│   ├── producer.py
-│   ├── requirements.txt
-│   └── Dockerfile
-└── consumer/
-├── consumer.py
-├── requirements.txt
-└── Dockerfile
 
 ## How to run it
 
