@@ -34,9 +34,9 @@ services:
   snowflake-init:
     build: ./init
     container_name: snowflake-init
+    restart: on-failure
     env_file:
       - .env
-    restart: on-failure
 
   consumer:
     build: ./consumer
@@ -44,6 +44,16 @@ services:
     depends_on:
     - broker
     - snowflake-init
+    restart: on-failure
+    env_file:
+      - .env
+
+  dbt:
+    build: ./dbt
+    container_name: dbt
+    depends_on:
+      - snowflake-init
+      - consumer
     restart: on-failure
     env_file:
       - .env
