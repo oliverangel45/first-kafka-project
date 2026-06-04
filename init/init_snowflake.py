@@ -59,6 +59,8 @@ def init_snowflake():
     cursor.execute(f"GRANT USAGE ON SCHEMA {SNOWFLAKE_DATABASE}.{SNOWFLAKE_SCHEMA} TO ROLE kafka_consumer_role")
     cursor.execute(f"GRANT INSERT ON TABLE {SNOWFLAKE_DATABASE}.{SNOWFLAKE_SCHEMA}.weather_readings TO ROLE kafka_consumer_role")
     cursor.execute("GRANT USAGE ON WAREHOUSE COMPUTE_WH TO ROLE kafka_consumer_role")
+    cursor.execute(f"GRANT SELECT ON ALL TABLES IN SCHEMA {SNOWFLAKE_DATABASE}.{SNOWFLAKE_SCHEMA} TO ROLE kafka_consumer_role")
+    cursor.execute(f"GRANT SELECT ON ALL VIEWS IN SCHEMA {SNOWFLAKE_DATABASE}.{SNOWFLAKE_SCHEMA} TO ROLE kafka_consumer_role")
     
     snowflake_user = os.environ.get('SNOWFLAKE_USER')
     snowflake_password = os.environ.get('SNOWFLAKE_PASSWORD')

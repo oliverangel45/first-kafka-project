@@ -57,3 +57,15 @@ services:
     restart: on-failure
     env_file:
       - .env
+
+  streamlit:
+    build: ./streamlit
+    container_name: streamlit
+    ports:
+      - "8501:8501"
+    depends_on:
+      - snowflake-init
+      - dbt
+    restart: on-failure
+    env_file:
+    - .env
