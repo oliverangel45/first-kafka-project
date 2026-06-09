@@ -1,5 +1,5 @@
 # My First Kafka Project: 🌤️ Weather Pipeline
-This project is a self led pilot project which aims to help teach me kafka basics including docker and other technologies.
+This project is a self led pilot project which aims to help teach me kafka basics including docker and other technologies, having already built a foundation through university modules.
 
 A real-time data pipeline built with Apache Kafka, Python, dbt, Snowflake and Streamlit.
 
